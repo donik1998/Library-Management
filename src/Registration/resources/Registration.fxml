@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#mouseHover" prefHeight="720.0" prefWidth="1024.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Registration.RegistrationController">
+   <children>
+      <Label fx:id="mainLabel" alignment="CENTER" layoutX="150.0" layoutY="10.0" prefHeight="57.0" prefWidth="720.0" text="STUDENT REGISTRATION PAGE" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="48.0" />
+         </font>
+         <effect>
+            <DropShadow height="10.0" radius="4.5" spread="0.2" width="10.0" />
+         </effect>
+      </Label>
+      <TextField fx:id="fullNameField" alignment="CENTER" layoutX="140.0" layoutY="103.0" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="40.0" prefWidth="300.0" promptText="Full Name" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 5;">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="studentIDField" alignment="CENTER" layoutX="140.0" layoutY="172.0" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="40.0" prefWidth="300.0" promptText="Student ID" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 5;">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="studentPhoneNumberField" alignment="CENTER" layoutX="140.0" layoutY="245.0" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="40.0" prefWidth="300.0" promptText="Phone Number" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 5;">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="studentMailboxField" alignment="CENTER" layoutX="140.0" layoutY="320.0" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="40.0" prefWidth="300.0" promptText="E-mail" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 5;">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font>
+      </TextField>
+      <DatePicker fx:id="studentDOBField" editable="false" layoutX="140.0" layoutY="395.0" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="40.0" prefWidth="300.0" promptText="Date of birth" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 5;" />
+      <RadioButton fx:id="maleStudentButton" layoutX="327.0" layoutY="467.0" mnemonicParsing="false" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" text="Male">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <Label fx:id="studentGenderLabel" layoutX="190.0" layoutY="492.0" text="Gender:">
+         <font>
+            <Font name="Bell MT Bold" size="20.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="femaleStudentButton" layoutX="327.0" layoutY="497.0" mnemonicParsing="false" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" text="Female">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="noGenderButton" layoutX="328.0" layoutY="527.0" mnemonicParsing="false" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" text="Hide my gender">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <CheckBox fx:id="studentConsentCheckbox" layoutX="76.0" layoutY="560.0" mnemonicParsing="false" text="I give my consent to use personal data provided in the above fields and agree Rules and Regulations of the library">
+         <font>
+            <Font name="Bell MT Bold" size="18.0" />
+         </font>
+      </CheckBox>
+      <Label fx:id="favouriteGenreLabel" layoutX="660.0" layoutY="90.0" text="Favourite genre of books">
+         <font>
+            <Font name="Bell MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="favouriteGenres" layoutX="550.0" layoutY="120.0" prefHeight="35.0" prefWidth="400.0" promptText="Choose an item" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 5;" visibleRowCount="5" />
+      <Label fx:id="regulationsLabel" alignment="CENTER" layoutX="670.0" layoutY="170.0" lineSpacing="1.0" text="Rules and Regulations">
+         <font>
+            <Font name="Bell MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="regulationsTextArea" editable="false" layoutX="550.0" layoutY="200.0" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: none; -fx-border-color: black;" text="sadsadas&#10;das&#10;d&#10;asd&#10;as&#10;d&#10;sa&#10;das&#10;d&#10;as&#10;fds&#10;ag&#10;adg&#10;df&#10;h&#10;dgf&#10;j&#10;gh&#10;h&#10;k&#10;hjgl&#10;g&#10;l&#10;h&#10;ghf&#10;gd&#10;f&#10;sfa&#10;sgdhd&#10;fgj&#10;hj&#10;h&#10;gd&#10;">
+         <font>
+            <Font name="Berlin Sans FB" size="14.0" />
+         </font>
+      </TextArea>
+      <Button fx:id="registerButton" layoutX="165.0" layoutY="620.0" mnemonicParsing="false" onAction="#register" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #73B301; -fx-border-radius: 5; -fx-border-color: green;" text="R E G I S T E R" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Bold" size="24.0" />
+         </font>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#73b301" spread="0.5" />
+         </effect>
+      </Button>
+      <Button fx:id="cancelButton" layoutX="625.0" layoutY="620.0" mnemonicParsing="false" onAction="#closeForm" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #FB4A29; -fx-border-radius: 5; -fx-border-color: red;" text="C A N C E L" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Bold" size="24.0" />
+         </font>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#fb4a29" spread="0.5" />
+         </effect>
+      </Button>
+      <TextField fx:id="studentUsernameField" alignment="CENTER" layoutX="600.0" layoutY="420.0" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="40.0" prefWidth="300.0" promptText="Username" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 5;">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="studentPasswordField" alignment="CENTER" layoutX="600.0" layoutY="480.0" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="40.0" prefWidth="300.0" promptText="Password" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 5;">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font>
+      </TextField>
+      <Label fx:id="fieldsRequirement" alignment="CENTER" contentDisplay="CENTER" layoutX="442.0" layoutY="70.0" prefWidth="140.0" text="All fields are required" textAlignment="CENTER" textFill="RED" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="studentWhiteUI" layoutX="10.0" layoutY="175.0" mnemonicParsing="false" onAction="#changeUI" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #fffffa;">
+         <effect>
+            <DropShadow color="WHITE" spread="0.5" />
+         </effect>
+      </Button>
+      <Button fx:id="studentRedUI" alignment="CENTER" layoutX="10.0" layoutY="215.0" mnemonicParsing="false" onAction="#changeUI" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #DD5044;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <DropShadow color="#dd5044" spread="0.5" />
+         </effect>
+      </Button>
+      <Button fx:id="studentGreenUI" alignment="CENTER" layoutX="10.0" layoutY="255.0" mnemonicParsing="false" onAction="#changeUI" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #2AA76A;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <DropShadow color="#2aa76a" spread="0.5" />
+         </effect>
+      </Button>
+      <Button fx:id="studentBlueUI" alignment="CENTER" layoutX="10.0" layoutY="295.0" mnemonicParsing="false" onAction="#changeUI" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #1479F3;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <DropShadow color="#1479f3" spread="0.5" />
+         </effect>
+      </Button>
+      <Button fx:id="studentYellowUI" alignment="CENTER" layoutX="10.0" layoutY="335.0" mnemonicParsing="false" onAction="#changeUI" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #FBD140;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <DropShadow color="#fbd140" spread="0.5" />
+         </effect>
+      </Button>
+      <Button fx:id="studentDarkUI" alignment="CENTER" layoutX="10.0" layoutY="375.0" mnemonicParsing="false" onAction="#changeUI" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #555555;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <DropShadow color="#555555" spread="0.5" />
+         </effect>
+      </Button>
+      <Button fx:id="studentVioletUI" alignment="CENTER" layoutX="10.0" layoutY="495.0" mnemonicParsing="false" onAction="#changeUI" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #9540A3;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <DropShadow color="#9540a3" spread="0.5" />
+         </effect>
+      </Button>
+      <Button fx:id="studentBrownUI" alignment="CENTER" layoutX="10.0" layoutY="455.0" mnemonicParsing="false" onAction="#changeUI" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #8D0A04;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <DropShadow color="#8d0a04" spread="0.5" />
+         </effect>
+      </Button>
+      <Button fx:id="studentOrangeUI" layoutX="10.0" layoutY="415.0" mnemonicParsing="false" onAction="#changeUI" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #F15A24;">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#f15a24" spread="0.5" />
+         </effect>
+      </Button>
+      <Rectangle fx:id="currentUIPositionRectangle" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="35.0" layoutX="8.0" layoutY="173.0" stroke="BLACK" width="35.0" />
+   </children>
+</Pane>
