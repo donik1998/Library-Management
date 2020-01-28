@@ -1,13 +1,11 @@
 package LogIn;
 
+import Main.Main;
 import Registration.RegistrationController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Glow;
@@ -17,7 +15,9 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LogInController {
 
@@ -67,6 +67,16 @@ public class LogInController {
     private Button backgroundOneButton;
 
     @FXML
+    private RadioButton adminButton;
+
+    @FXML
+    private RadioButton librarianButton;
+
+    @FXML
+    private RadioButton memberButton;
+    private ToggleGroup userTypes = new ToggleGroup();
+
+    @FXML
     void changeBackgroundImage(ActionEvent event) {
         if(event.getTarget().equals(backgroundThreeButton)){
             backgroundImage.setImage(backgroundThreeImage.getImage());
@@ -100,12 +110,6 @@ public class LogInController {
 
     @FXML
     void mouseHover(MouseEvent event) {
-        //hover effect for main label
-        if(event.getSource().equals(mainLabel)){
-            mainLabel.setScaleX(1.0095);
-            mainLabel.setScaleY(1.0095);
-            mainLabel.setEffect(new DropShadow(BlurType.GAUSSIAN,Color.BLACK,10,0.5,0,0));
-        }
         //hover effect for exit button
         if(event.getSource().equals(exitButton)){
             exitButton.setEffect(new DropShadow(5, Color.RED));
@@ -165,12 +169,6 @@ public class LogInController {
 
     @FXML
     void mouseHoverExit(MouseEvent event) {
-        //hover exit effect for main label
-        if(event.getSource().equals(mainLabel)){
-            mainLabel.setEffect(new Glow(1));
-            mainLabel.setScaleX(1);
-            mainLabel.setScaleY(1);
-        }
         //hover exit effect for exit button
         if(event.getSource().equals(exitButton)){
             exitButton.setEffect(new DropShadow(5,Color.BLACK));
@@ -240,9 +238,63 @@ public class LogInController {
     }
 
     @FXML
-    void userSignIn(ActionEvent event) {
+    void setupScene(MouseEvent event) {
+        if(event.getSource().equals(mainPane)){
+            adminButton.setToggleGroup(userTypes);
+            librarianButton.setToggleGroup(userTypes);
+            memberButton.setToggleGroup(userTypes);
+        }
+    }
+    @FXML
+    void userSignIn(ActionEvent event) throws SQLException,IOException {
+        Alert wrongUsernameMessage = new Alert(Alert.AlertType.ERROR);
+        Alert wrongPasswordMessage = new Alert(Alert.AlertType.ERROR);
+        Alert wrongPasswordAndUsernameMessage = new Alert(Alert.AlertType.ERROR);
+        Alert loginSuccess = new Alert(Alert.AlertType.INFORMATION);
         if(event.getTarget().equals(signInButton)){
-
+            //conditions to distinguish which user is trying to log in
+            if(adminButton.isSelected()){
+                Main.dbConnection.setResultSet("SELECT * FROM admins");
+                Main.currentUserType = adminButton.getText();
+            }else if(librarianButton.isSelected()){
+                Main.dbConnection.setResultSet("SELECT * FROM librarians");
+                Main.currentUserType = librarianButton.getText();
+            }else {
+                Main.currentUserType = memberButton.getText();
+                Main.dbConnection.setResultSet("SELECT * FROM members");
+            }
+            //checking if there is such user with specified username and log in
+            while (Main.dbConnection.getResultSet().next()){
+                if(!Main.dbConnection.getResultSet().getString("Username").equals(userNameToLogIn.getText()) &&
+                        !Main.dbConnection.getResultSet().getString("Password").equals(userPasswordToLogIn.getText())){
+                    //wrong username and password
+                    wrongPasswordAndUsernameMessage.setContentText("Invalid username and password");
+                    wrongPasswordAndUsernameMessage.show();
+                }else if(!Main.dbConnection.getResultSet().getString("Username").equals(userNameToLogIn.getText())){
+                    //wrong username
+                    wrongUsernameMessage.setContentText("Invalid username!!!");
+                    wrongUsernameMessage.show();
+                }else if(!Main.dbConnection.getResultSet().getString("Password").equals(userPasswordToLogIn.getText())){
+                    //wrong password
+                    wrongPasswordMessage.setContentText("Invalid password!!!");
+                    wrongPasswordMessage.show();
+                } else {
+                    //login success
+                    loginSuccess.setContentText("You have logged in successfully" +
+                            "\nWelcome " + Main.dbConnection.getResultSet().getString("Name"));
+                    loginSuccess.show();
+                    Stage newStage = new Stage();
+                    Main.currentUserName = Main.dbConnection.getResultSet().getString("Name");
+                    if(Main.currentUserType.equals(adminButton.getText())){
+                        //load admin page here
+                    }else if(Main.currentUserType.equals(librarianButton.getText())){
+                        //load librarian page here
+                    }else{
+                        //load library member page
+                        newStage = FXMLLoader.load(getClass().getResource(""));
+                    }
+                }
+            }
         }
     }
 }

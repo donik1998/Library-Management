@@ -1,5 +1,6 @@
 package Registration;
 
+import Main.Main;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,44 +16,12 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class RegistrationController {
     @FXML
-    public Label fieldsRequirement;
-
-    @FXML
     private Pane mainPane;
-
-    @FXML
-    private Rectangle currentUIPositionRectangle;
-
-    @FXML
-    private Button studentWhiteUI;
-
-    @FXML
-    private Button studentRedUI;
-
-    @FXML
-    private Button studentGreenUI;
-
-    @FXML
-    private Button studentBlueUI;
-
-    @FXML
-    private Button studentYellowUI;
-
-    @FXML
-    private Button studentDarkUI;
-
-    @FXML
-    private Button studentOrangeUI;
-
-    @FXML
-    private Button studentVioletUI;
-
-    @FXML
-    private Button studentBrownUI;
 
     @FXML
     private Label mainLabel;
@@ -61,31 +30,28 @@ public class RegistrationController {
     private TextField fullNameField;
 
     @FXML
-    private TextField studentIDField;
+    private TextField phoneNumberField;
 
     @FXML
-    private TextField studentPhoneNumberField;
+    private TextField mailboxField;
 
     @FXML
-    private TextField studentMailboxField;
+    private DatePicker dateOfBirthField;
 
     @FXML
-    private DatePicker studentDOBField;
+    private RadioButton maleMemberButton;
 
     @FXML
-    private RadioButton maleStudentButton;
+    private Label memberGenderLabel;
 
     @FXML
-    private Label studentGenderLabel;
-
-    @FXML
-    private RadioButton femaleStudentButton;
+    private RadioButton femaleMemberButton;
 
     @FXML
     private RadioButton noGenderButton;
 
     @FXML
-    private CheckBox studentConsentCheckbox;
+    private CheckBox memberConsentCheckbox;
 
     @FXML
     private Label favouriteGenreLabel;
@@ -106,10 +72,44 @@ public class RegistrationController {
     private Button cancelButton;
 
     @FXML
-    private TextField studentUsernameField;
+    private TextField memberUsername;
 
     @FXML
-    private TextField studentPasswordField;
+    private TextField memberPassword;
+
+    @FXML
+    private Label fieldsRequirement;
+
+    @FXML
+    private Button whiteUI;
+
+    @FXML
+    private Button redUI;
+
+    @FXML
+    private Button greenUI;
+
+    @FXML
+    private Button blueUI;
+
+    @FXML
+    private Button yellowUI;
+
+    @FXML
+    private Button darkUI;
+
+    @FXML
+    private Button violetUI;
+
+    @FXML
+    private Button brownUI;
+
+    @FXML
+    private Button orangeUI;
+
+    @FXML
+    private Rectangle currentUIPositionRectangle;
+
     private List<Button> UIButtons;
     private ToggleGroup genders = new ToggleGroup();
     private int previousUIndex = 0, currentUIndex = 0;
@@ -143,160 +143,181 @@ public class RegistrationController {
         translateDown.setAutoReverse(false);
         translateDown.play();
     }
+    //hover effect for textFields
+    private void inputHoverEffects(TextField hoverTarget){
+        hoverTarget.setScaleX(1.0095);
+        hoverTarget.setScaleY(1.0095);
+        hoverTarget.setEffect(new Glow(1));
+        hoverTarget.setBorder(new Border(
+                new BorderStroke(Color.web("A4B7D8"),BorderStrokeStyle.SOLID,new CornerRadii(5),new BorderWidths(2))
+        ));
+    }
+    //hover exit effect for textFields
+    private void inputHoverExitEffects(TextField hoverExitTarget){
+        if(!hoverExitTarget.isFocused()){
+            hoverExitTarget.setScaleX(1);
+            hoverExitTarget.setScaleY(1);
+            hoverExitTarget.setBorder(new Border(
+                    new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,new CornerRadii(5),new BorderWidths(1))
+            ));
+        }else {
+            inputHoverEffects(hoverExitTarget);
+        }
+    }
     @FXML
-    void changeUI(ActionEvent event) {
-        if(event.getTarget().equals(studentWhiteUI)){
+    void changeUI(ActionEvent event){
+        if(event.getTarget().equals(whiteUI)){
             mainPane.setBackground(new Background(new BackgroundFill(Color.PINK,null,null)));
-            scaleButton(studentWhiteUI,1.2);
-            unScaleAll(studentWhiteUI);
+            scaleButton(whiteUI,1.2);
+            unScaleAll(whiteUI);
             previousUIndex=currentUIndex;
-            currentUIndex=UIButtons.indexOf(studentWhiteUI);
+            currentUIndex=UIButtons.indexOf(whiteUI);
             changeCurrentUIPointer();
-            mainPane.setBackground(studentWhiteUI.getBackground());
+            mainPane.setBackground(whiteUI.getBackground());
             fieldsRequirement.setTextFill(Color.RED);
             mainLabel.setTextFill(Color.WHITE);
-            studentGenderLabel.setTextFill(Color.BLACK);
-            studentConsentCheckbox.setTextFill(Color.BLACK);
+            memberGenderLabel.setTextFill(Color.BLACK);
+            memberConsentCheckbox.setTextFill(Color.BLACK);
             regulationsLabel.setTextFill(Color.BLACK);
             favouriteGenreLabel.setTextFill(Color.BLACK);
-            maleStudentButton.setTextFill(Color.BLACK);
-            femaleStudentButton.setTextFill(Color.BLACK);
+            maleMemberButton.setTextFill(Color.BLACK);
+            femaleMemberButton.setTextFill(Color.BLACK);
             noGenderButton.setTextFill(Color.BLACK);
         }
-        if(event.getTarget().equals(studentRedUI)){
-            scaleButton(studentRedUI,1.2);
-            unScaleAll(studentRedUI);
+        if(event.getTarget().equals(redUI)){
+            scaleButton(redUI,1.2);
+            unScaleAll(redUI);
             previousUIndex=currentUIndex;
-            currentUIndex=UIButtons.indexOf(studentRedUI);
+            currentUIndex=UIButtons.indexOf(redUI);
             changeCurrentUIPointer();
-            mainPane.setBackground(studentRedUI.getBackground());
+            mainPane.setBackground(redUI.getBackground());
             fieldsRequirement.setTextFill(Color.WHITE);
             mainLabel.setTextFill(Color.web("DD5044"));
-            studentGenderLabel.setTextFill(Color.WHITE);
-            studentConsentCheckbox.setTextFill(Color.WHITE);
+            memberGenderLabel.setTextFill(Color.WHITE);
+            memberConsentCheckbox.setTextFill(Color.WHITE);
             regulationsLabel.setTextFill(Color.WHITE);
             favouriteGenreLabel.setTextFill(Color.WHITE);
-            maleStudentButton.setTextFill(Color.WHITE);
-            femaleStudentButton.setTextFill(Color.WHITE);
+            maleMemberButton.setTextFill(Color.WHITE);
+            femaleMemberButton.setTextFill(Color.WHITE);
             noGenderButton.setTextFill(Color.WHITE);
         }
-        if(event.getTarget().equals(studentGreenUI)){
-            scaleButton(studentGreenUI,1.2);
-            unScaleAll(studentGreenUI);
+        if(event.getTarget().equals(greenUI)){
+            scaleButton(greenUI,1.2);
+            unScaleAll(greenUI);
             previousUIndex=currentUIndex;
-            currentUIndex=UIButtons.indexOf(studentGreenUI);
+            currentUIndex=UIButtons.indexOf(greenUI);
             changeCurrentUIPointer();
-            mainPane.setBackground(studentGreenUI.getBackground());
+            mainPane.setBackground(greenUI.getBackground());
             fieldsRequirement.setTextFill(Color.WHITE);
             mainLabel.setTextFill(Color.web("2AA76A"));
-            studentGenderLabel.setTextFill(Color.WHITE);
-            studentConsentCheckbox.setTextFill(Color.WHITE);
+            memberGenderLabel.setTextFill(Color.WHITE);
+            memberConsentCheckbox.setTextFill(Color.WHITE);
             regulationsLabel.setTextFill(Color.WHITE);
             favouriteGenreLabel.setTextFill(Color.WHITE);
-            maleStudentButton.setTextFill(Color.WHITE);
-            femaleStudentButton.setTextFill(Color.WHITE);
+            maleMemberButton.setTextFill(Color.WHITE);
+            femaleMemberButton.setTextFill(Color.WHITE);
             noGenderButton.setTextFill(Color.WHITE);
         }
-        if(event.getTarget().equals(studentBlueUI)){
-            scaleButton(studentBlueUI,1.2);
-            unScaleAll(studentBlueUI);
+        if(event.getTarget().equals(blueUI)){
+            scaleButton(blueUI,1.2);
+            unScaleAll(blueUI);
             previousUIndex=currentUIndex;
-            currentUIndex=UIButtons.indexOf(studentBlueUI);
+            currentUIndex=UIButtons.indexOf(blueUI);
             changeCurrentUIPointer();
-            mainPane.setBackground(studentBlueUI.getBackground());
+            mainPane.setBackground(blueUI.getBackground());
             fieldsRequirement.setTextFill(Color.WHITE);
-            mainLabel.setTextFill(Color.web("1479F3"));
-            studentGenderLabel.setTextFill(Color.WHITE);
-            studentConsentCheckbox.setTextFill(Color.WHITE);
+            mainLabel.setTextFill(Color.web("2EA5E2"));
+            memberGenderLabel.setTextFill(Color.WHITE);
+            memberConsentCheckbox.setTextFill(Color.WHITE);
             regulationsLabel.setTextFill(Color.WHITE);
             favouriteGenreLabel.setTextFill(Color.WHITE);
-            maleStudentButton.setTextFill(Color.WHITE);
-            femaleStudentButton.setTextFill(Color.WHITE);
+            maleMemberButton.setTextFill(Color.WHITE);
+            femaleMemberButton.setTextFill(Color.WHITE);
             noGenderButton.setTextFill(Color.WHITE);
         }
-        if(event.getTarget().equals(studentYellowUI)){
-            scaleButton(studentYellowUI,1.2);
-            unScaleAll(studentYellowUI);
+        if(event.getTarget().equals(yellowUI)){
+            scaleButton(yellowUI,1.2);
+            unScaleAll(yellowUI);
             previousUIndex=currentUIndex;
-            currentUIndex=UIButtons.indexOf(studentYellowUI);
+            currentUIndex=UIButtons.indexOf(yellowUI);
             changeCurrentUIPointer();
-            mainPane.setBackground(studentYellowUI.getBackground());
+            mainPane.setBackground(yellowUI.getBackground());
             fieldsRequirement.setTextFill(Color.BLACK);
             mainLabel.setTextFill(Color.web("FBD140"));
-            studentGenderLabel.setTextFill(Color.BLACK);
-            studentConsentCheckbox.setTextFill(Color.BLACK);
+            memberGenderLabel.setTextFill(Color.BLACK);
+            memberConsentCheckbox.setTextFill(Color.BLACK);
             regulationsLabel.setTextFill(Color.BLACK);
             favouriteGenreLabel.setTextFill(Color.BLACK);
-            maleStudentButton.setTextFill(Color.BLACK);
-            femaleStudentButton.setTextFill(Color.BLACK);
+            maleMemberButton.setTextFill(Color.BLACK);
+            femaleMemberButton.setTextFill(Color.BLACK);
             noGenderButton.setTextFill(Color.BLACK);
         }
-        if(event.getTarget().equals(studentDarkUI)){
-            scaleButton(studentDarkUI,1.2);
-            unScaleAll(studentDarkUI);
+        if(event.getTarget().equals(darkUI)){
+            scaleButton(darkUI,1.2);
+            unScaleAll(darkUI);
             previousUIndex=currentUIndex;
-            currentUIndex=UIButtons.indexOf(studentDarkUI);
+            currentUIndex=UIButtons.indexOf(darkUI);
             changeCurrentUIPointer();
-            mainPane.setBackground(studentDarkUI.getBackground());
+            mainPane.setBackground(darkUI.getBackground());
             fieldsRequirement.setTextFill(Color.WHITE);
             mainLabel.setTextFill(Color.web("555555"));
-            studentGenderLabel.setTextFill(Color.web("B2B2A4"));
-            studentConsentCheckbox.setTextFill(Color.web("B2B2A4"));
+            memberGenderLabel.setTextFill(Color.web("B2B2A4"));
+            memberConsentCheckbox.setTextFill(Color.web("B2B2A4"));
             regulationsLabel.setTextFill(Color.web("B2B2A4"));
             favouriteGenreLabel.setTextFill(Color.web("B2B2A4"));
-            maleStudentButton.setTextFill(Color.web("B2B2A4"));
-            femaleStudentButton.setTextFill(Color.web("B2B2A4"));
+            maleMemberButton.setTextFill(Color.web("B2B2A4"));
+            femaleMemberButton.setTextFill(Color.web("B2B2A4"));
             noGenderButton.setTextFill(Color.web("B2B2A4"));
         }
-        if(event.getTarget().equals(studentOrangeUI)){
-            scaleButton(studentOrangeUI,1.2);
-            unScaleAll(studentOrangeUI);
+        if(event.getTarget().equals(orangeUI)){
+            scaleButton(orangeUI,1.2);
+            unScaleAll(orangeUI);
             previousUIndex=currentUIndex;
-            currentUIndex=UIButtons.indexOf(studentOrangeUI);
+            currentUIndex=UIButtons.indexOf(orangeUI);
             changeCurrentUIPointer();
-            mainPane.setBackground(studentOrangeUI.getBackground());
+            mainPane.setBackground(orangeUI.getBackground());
             fieldsRequirement.setTextFill(Color.BLACK);
             mainLabel.setTextFill(Color.web("F15A24"));
-            studentGenderLabel.setTextFill(Color.WHITE);
-            studentConsentCheckbox.setTextFill(Color.WHITE);
+            memberGenderLabel.setTextFill(Color.WHITE);
+            memberConsentCheckbox.setTextFill(Color.WHITE);
             regulationsLabel.setTextFill(Color.WHITE);
             favouriteGenreLabel.setTextFill(Color.WHITE);
-            maleStudentButton.setTextFill(Color.WHITE);
-            femaleStudentButton.setTextFill(Color.WHITE);
+            maleMemberButton.setTextFill(Color.WHITE);
+            femaleMemberButton.setTextFill(Color.WHITE);
             noGenderButton.setTextFill(Color.WHITE);
         }
-        if(event.getTarget().equals(studentVioletUI)){
-            scaleButton(studentVioletUI,1.2);
-            unScaleAll(studentVioletUI);
+        if(event.getTarget().equals(violetUI)){
+            scaleButton(violetUI,1.2);
+            unScaleAll(violetUI);
             previousUIndex=currentUIndex;
-            currentUIndex=UIButtons.indexOf(studentVioletUI);
+            currentUIndex=UIButtons.indexOf(violetUI);
             changeCurrentUIPointer();
-            mainPane.setBackground(studentVioletUI.getBackground());
+            mainPane.setBackground(violetUI.getBackground());
             fieldsRequirement.setTextFill(Color.WHITE);
             mainLabel.setTextFill(Color.web("A949F3"));
-            studentGenderLabel.setTextFill(Color.WHITE);
-            studentConsentCheckbox.setTextFill(Color.WHITE);
+            memberGenderLabel.setTextFill(Color.WHITE);
+            memberConsentCheckbox.setTextFill(Color.WHITE);
             regulationsLabel.setTextFill(Color.WHITE);
             favouriteGenreLabel.setTextFill(Color.WHITE);
-            maleStudentButton.setTextFill(Color.WHITE);
-            femaleStudentButton.setTextFill(Color.WHITE);
+            maleMemberButton.setTextFill(Color.WHITE);
+            femaleMemberButton.setTextFill(Color.WHITE);
             noGenderButton.setTextFill(Color.WHITE);
         }
-        if(event.getTarget().equals(studentBrownUI)){
-            scaleButton(studentBrownUI,1.2);
-            unScaleAll(studentBrownUI);
+        if(event.getTarget().equals(brownUI)){
+            scaleButton(brownUI,1.2);
+            unScaleAll(brownUI);
             previousUIndex=currentUIndex;
-            currentUIndex=UIButtons.indexOf(studentBrownUI);
+            currentUIndex=UIButtons.indexOf(brownUI);
             changeCurrentUIPointer();
-            mainPane.setBackground(studentBrownUI.getBackground());
+            mainPane.setBackground(brownUI.getBackground());
             fieldsRequirement.setTextFill(Color.WHITE);
             mainLabel.setTextFill(Color.web("8D0A04"));
-            studentGenderLabel.setTextFill(Color.WHITE);
-            studentConsentCheckbox.setTextFill(Color.WHITE);
+            memberGenderLabel.setTextFill(Color.WHITE);
+            memberConsentCheckbox.setTextFill(Color.WHITE);
             regulationsLabel.setTextFill(Color.WHITE);
             favouriteGenreLabel.setTextFill(Color.WHITE);
-            maleStudentButton.setTextFill(Color.WHITE);
-            femaleStudentButton.setTextFill(Color.WHITE);
+            maleMemberButton.setTextFill(Color.WHITE);
+            femaleMemberButton.setTextFill(Color.WHITE);
             noGenderButton.setTextFill(Color.WHITE);
         }
     }
@@ -313,18 +334,49 @@ public class RegistrationController {
     void mouseHover(MouseEvent event) {
         //setup scene on mouse entered to main pane
         if(event.getSource().equals(mainPane)){
-            maleStudentButton.setToggleGroup(genders);
-            femaleStudentButton.setToggleGroup(genders);
+            maleMemberButton.setToggleGroup(genders);
+            femaleMemberButton.setToggleGroup(genders);
             noGenderButton.setToggleGroup(genders);
-            UIButtons = List.of(studentWhiteUI, studentRedUI, studentGreenUI, studentBlueUI,
-                    studentYellowUI, studentDarkUI, studentOrangeUI, studentBrownUI, studentVioletUI);
+            UIButtons = List.of(whiteUI, redUI, greenUI, blueUI,
+                    yellowUI, darkUI, orangeUI, brownUI, violetUI);
             favouriteGenres.setItems(genres);
+        }
+        //hover effect for inputs
+        if(event.getSource().equals(fullNameField)){
+            inputHoverEffects(fullNameField);
+        }
+        if(event.getSource().equals(phoneNumberField)){
+            inputHoverEffects(phoneNumberField);
+        }
+        if(event.getSource().equals(mailboxField)){
+            inputHoverEffects(mailboxField);
+        }
+        if(event.getSource().equals(memberUsername)){
+            inputHoverEffects(memberUsername);
+        }
+        if(event.getSource().equals(memberPassword)){
+            inputHoverEffects(memberPassword);
         }
     }
 
     @FXML
     void mouseHoverExit(MouseEvent event) {
-
+        //hover exit effect for inputs
+        if(event.getSource().equals(fullNameField)){
+            inputHoverExitEffects(fullNameField);
+        }
+        if(event.getSource().equals(phoneNumberField)){
+            inputHoverExitEffects(phoneNumberField);
+        }
+        if(event.getSource().equals(mailboxField)){
+            inputHoverExitEffects(mailboxField);
+        }
+        if(event.getSource().equals(memberUsername)){
+            inputHoverExitEffects(memberUsername);
+        }
+        if(event.getSource().equals(memberPassword)){
+            inputHoverExitEffects(memberPassword);
+        }
     }
 
     @FXML

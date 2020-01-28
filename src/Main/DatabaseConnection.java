@@ -21,4 +21,22 @@ public class DatabaseConnection {
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library",username,password);
         statement = connection.createStatement();
     }
+    public void executeCustomQuery(String query) throws SQLException{
+        statement.execute(query);
+    }
+    public void setResultSet(String query)throws SQLException{
+        resultSet=statement.executeQuery(query);
+    }
+    public ResultSet getResultSet(){
+        return resultSet;
+    }
+    public void closeConnection()throws SQLException{
+        if(connection!=null){
+            connection.close();
+        }
+    }
+    public void changeConnection(String dbName, String username, String password) throws SQLException{
+        connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dbName,username,password);
+        statement=connection.createStatement();
+    }
 }
