@@ -1,7 +1,6 @@
 package LogIn;
 
 import Main.Main;
-import Registration.RegistrationController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +14,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -248,9 +246,13 @@ public class LogInController {
     @FXML
     void userSignIn(ActionEvent event) throws SQLException,IOException {
         Alert wrongUsernameMessage = new Alert(Alert.AlertType.ERROR);
+        wrongUsernameMessage.setTitle("Wrong username");
         Alert wrongPasswordMessage = new Alert(Alert.AlertType.ERROR);
+        wrongPasswordMessage.setTitle("Wrong password");
         Alert wrongPasswordAndUsernameMessage = new Alert(Alert.AlertType.ERROR);
+        wrongPasswordAndUsernameMessage.setTitle("Wrong username and password");
         Alert loginSuccess = new Alert(Alert.AlertType.INFORMATION);
+        Pane newPane;
         if(event.getTarget().equals(signInButton)){
             //conditions to distinguish which user is trying to log in
             if(adminButton.isSelected()){
@@ -283,15 +285,18 @@ public class LogInController {
                     loginSuccess.setContentText("You have logged in successfully" +
                             "\nWelcome " + Main.dbConnection.getResultSet().getString("Name"));
                     loginSuccess.show();
-                    Stage newStage = new Stage();
                     Main.currentUserName = Main.dbConnection.getResultSet().getString("Name");
                     if(Main.currentUserType.equals(adminButton.getText())){
                         //load admin page here
+
                     }else if(Main.currentUserType.equals(librarianButton.getText())){
                         //load librarian page here
+                        newPane = FXMLLoader.load(getClass().getResource("/Librarian/resources/LibrarianPage.fxml"));
+                        mainPane.getChildren().add(newPane);
                     }else{
                         //load library member page
-                        newStage = FXMLLoader.load(getClass().getResource(""));
+                        newPane = FXMLLoader.load(getClass().getResource("/Member/resources/MemberPage.fxml"));
+                        mainPane.getChildren().add(newPane);
                     }
                 }
             }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#setupScene" prefHeight="720.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Librarian.LibrarianPageController">
+   <children>
+      <Label fx:id="mainLabel" alignment="CENTER" layoutX="20.0" layoutY="20.0" prefWidth="800.0" text="Librarian Page" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="48.0" />
+         </font>
+         <effect>
+            <DropShadow height="20.0" radius="9.5" spread="0.5" width="20.0" />
+         </effect>
+      </Label>
+      <Button layoutX="820.0" layoutY="15.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 50%;" />
+      <Button layoutX="910.0" layoutY="15.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 50%;" />
+      <Button alignment="CENTER" layoutX="120.0" layoutY="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
+      <Label alignment="CENTER" layoutX="120.0" layoutY="310.0" prefHeight="20.0" prefWidth="150.0" text="Return a book">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button alignment="CENTER" layoutX="435.0" layoutY="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
+      <Button alignment="CENTER" layoutX="750.0" layoutY="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
+      <Label alignment="CENTER" layoutX="430.0" layoutY="310.0" prefHeight="20.0" prefWidth="160.0" text="All books available">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="735.0" layoutY="310.0" prefHeight="20.0" prefWidth="180.0" text="Students with overdue">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button alignment="CENTER" layoutX="120.0" layoutY="400.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
+      <Label alignment="CENTER" layoutX="120.0" layoutY="560.0" prefHeight="20.0" prefWidth="150.0" text="Issue a book">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button alignment="CENTER" layoutX="435.0" layoutY="400.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
+      <Label alignment="CENTER" layoutX="415.0" layoutY="560.0" prefHeight="20.0" prefWidth="190.0" text="Members management">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
