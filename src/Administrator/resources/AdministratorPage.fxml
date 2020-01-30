@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#setupScene" prefHeight="720.0" prefWidth="1024.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Administrator.AdministratorPageController">
+   <children>
+      <Label fx:id="mainLabel" alignment="CENTER" layoutX="20.0" layoutY="20.0" prefHeight="50.0" prefWidth="800.0" text="Administrator Page" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="48.0" />
+         </font>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="20.0" radius="9.5" spread="0.5" width="20.0" />
+         </effect>
+      </Label>
+      <Button fx:id="accountSettingsButton" alignment="CENTER" layoutX="860.0" layoutY="20.0" mnemonicParsing="false" onAction="#showAccountSettings" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="60.0" prefWidth="60.0" style="-fx-background-radius: 50%; -fx-background-color: transparent;" />
+      
+      <Button fx:id="logOutButton" alignment="CENTER" layoutX="930.0" layoutY="20.0" mnemonicParsing="false" onAction="#logOut" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 50%;" />
+      <Button fx:id="membersManagementButton" alignment="CENTER" layoutX="100.0" layoutY="230.0" mnemonicParsing="false" onAction="#showMembersManagementDialog" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 15;" />
+      <Button fx:id="librarianManagementButton" alignment="CENTER" layoutX="400.0" layoutY="230.0" mnemonicParsing="false" onAction="#showLibrarianManagementDialog" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 15;" />
+      <Button fx:id="bookManagementButton" alignment="CENTER" layoutX="700.0" layoutY="230.0" mnemonicParsing="false" onAction="#showBookManagementDialog" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 15;" />
+      <Label fx:id="membersManagementLabel" alignment="CENTER" layoutX="95.0" layoutY="440.0" prefHeight="30.0" prefWidth="210.0" text="Members management">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="librarianManagementLabel" alignment="CENTER" layoutX="390.0" layoutY="440.0" prefHeight="30.0" prefWidth="220.0" text="Librarians management">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="booksManagementLabel" alignment="CENTER" layoutX="700.0" layoutY="440.0" prefHeight="30.0" prefWidth="200.0" text="Books management">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="whiteUI" layoutX="84.0" layoutY="600.0" mnemonicParsing="false" onAction="#changeUI" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: white; -fx-background-radius: 50%;">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="WHITE" height="20.0" radius="9.5" spread="0.5" width="20.0" />
+         </effect>
+      </Button>
+      <Button fx:id="redUI" layoutX="184.0" layoutY="600.0" mnemonicParsing="false" onAction="#changeUI" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #dd5044; -fx-background-radius: 50%;">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#dd5044" height="20.0" radius="9.5" spread="0.5" width="20.0" />
+         </effect>
+      </Button>
+      <Button fx:id="greenUI" layoutX="284.0" layoutY="600.0" mnemonicParsing="false" onAction="#changeUI" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #2aa76a; -fx-background-radius: 50%;">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#2aa76a" height="20.0" radius="9.5" spread="0.5" width="20.0" />
+         </effect>
+      </Button>
+      <Button fx:id="blueUI" layoutX="384.0" layoutY="600.0" mnemonicParsing="false" onAction="#changeUI" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #2ea5e2; -fx-background-radius: 50%;">
+         <effect>
+            <DropShadow color="#2ea5e2" height="20.0" radius="9.5" spread="0.5" width="20.0" />
+         </effect>
+      </Button>
+      <Button fx:id="yellowUI" layoutX="484.0" layoutY="600.0" mnemonicParsing="false" onAction="#changeUI" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #fbd140; -fx-background-radius: 50%;">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#fbd140" height="20.0" radius="9.5" spread="0.5" width="20.0" />
+         </effect>
+      </Button>
+      <Button fx:id="darkUI" layoutX="584.0" layoutY="600.0" mnemonicParsing="false" onAction="#changeUI" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #555555; -fx-background-radius: 50%;">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#555555" height="20.0" radius="9.5" spread="0.5" width="20.0" />
+         </effect>
+      </Button>
+      <Button fx:id="orangeUI" layoutX="684.0" layoutY="600.0" mnemonicParsing="false" onAction="#changeUI" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #F15A24; -fx-background-radius: 50%;">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#f15a24" height="20.0" radius="9.5" spread="0.5" width="20.0" />
+         </effect>
+      </Button>
+      <Button fx:id="brownUI" layoutX="784.0" layoutY="600.0" mnemonicParsing="false" onAction="#changeUI" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #8d0a04; -fx-background-radius: 50%;">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#8d0a04" height="20.0" radius="9.5" spread="0.5" width="20.0" />
+         </effect>
+      </Button>
+      <Button fx:id="violetUi" layoutX="884.0" layoutY="600.0" mnemonicParsing="false" onAction="#changeUI" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #9540a3; -fx-background-radius: 50%;">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#9540a3" height="20.0" radius="9.5" spread="0.5" width="20.0" />
+         </effect>
+      </Button>
+      <Circle fx:id="UIPointer" fill="#1f93ff00" layoutX="110.0" layoutY="627.0" radius="25.0" stroke="BLACK" strokeType="INSIDE">
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </Circle>
+   </children>
+</Pane>

@@ -101,7 +101,7 @@
             <Font name="Bell MT Bold" size="18.0" />
          </font>
       </Label>
-      <Circle fill="TRANSPARENT" layoutX="125.0" layoutY="646.0" radius="18.0" stroke="BLACK" strokeType="INSIDE">
+      <Circle fx:id="UIPointer" fill="TRANSPARENT" layoutX="125.0" layoutY="646.0" radius="18.0" stroke="BLACK" strokeType="INSIDE">
          <effect>
             <Glow level="1.0" />
          </effect>

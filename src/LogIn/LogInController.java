@@ -288,7 +288,8 @@ public class LogInController {
                     Main.currentUserName = Main.dbConnection.getResultSet().getString("Name");
                     if(Main.currentUserType.equals(adminButton.getText())){
                         //load admin page here
-
+                        newPane = FXMLLoader.load(getClass().getResource("/Administrator/resources/AdministratorPage.fxml"));
+                        mainPane.getChildren().add(newPane);
                     }else if(Main.currentUserType.equals(librarianButton.getText())){
                         //load librarian page here
                         newPane = FXMLLoader.load(getClass().getResource("/Librarian/resources/LibrarianPage.fxml"));

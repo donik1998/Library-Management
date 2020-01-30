@@ -2,13 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Librarian/LibrarianPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Librarian/resources/LibrarianPage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Member/MemberPageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/json2java.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Administrator/AdministratorPageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Administrator/imgs/booksManagementIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Administrator/imgs/librarianManagementIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Administrator/imgs/logoutImage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Administrator/imgs/memberManagementIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Administrator/imgs/settingImage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Administrator/resources/AdministratorPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Library Management/LogIn/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library Management/LogIn/LogInController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library Management/Member/MemberPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library Management/Member/MemberPageController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Library Management/Member/resources/MemberPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library Management/Member/resources/MemberPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Librarian/LibrarianPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Librarian/LibrarianPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Librarian/resources/LibrarianPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Librarian/resources/LibrarianPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LogIn/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LogIn/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Member/MemberPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Member/MemberPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Member/resources/MemberPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Member/resources/MemberPage.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -151,6 +160,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="recentsLimit" value="5" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -274,7 +284,7 @@
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1580110075770" duration="961000" />
       <workItem from="1580200848614" duration="11591000" />
-      <workItem from="1580252437682" duration="3104000" />
+      <workItem from="1580252437682" duration="17924000" />
     </task>
     <servers />
   </component>

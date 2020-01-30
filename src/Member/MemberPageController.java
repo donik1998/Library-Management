@@ -34,7 +34,63 @@ public class MemberPageController {
     private Button booksOnDue;
 
     @FXML
+    private Button finesAppliedButton;
+
+    @FXML
+    private Button bookLoansTaken;
+
+    @FXML
+    private Button whiteUI;
+
+    @FXML
+    private Button redUI;
+
+    @FXML
+    private Button greenUI;
+
+    @FXML
+    private Button blueUI;
+
+    @FXML
+    private Button yellowUI;
+
+    @FXML
+    private Button darkUI;
+
+    @FXML
+    private Button orangeUI;
+
+    @FXML
+    private Button brownUI;
+
+    @FXML
+    private Button violetUi;
+
+    @FXML
+    private Label bookReservationLabel;
+
+    @FXML
+    private Label bookReservationLabel1;
+
+    @FXML
+    private Label bookReservationLabel11;
+
+    @FXML
+    private Label bookReservationLabel12;
+
+    @FXML
+    private Label bookReservationLabel121;
+
+    @FXML
+    private Label bookReservationLabel1211;
+
+    @FXML
     void booksOnDue(ActionEvent event) {
+
+    }
+
+    @FXML
+    void changeUI(ActionEvent event) {
 
     }
 
@@ -54,7 +110,17 @@ public class MemberPageController {
     }
 
     @FXML
+    void showAppliedFines(ActionEvent event) {
+
+    }
+
+    @FXML
     void showBookHistory(ActionEvent event) {
+
+    }
+
+    @FXML
+    void showCurrentLoans(ActionEvent event) {
 
     }
 
