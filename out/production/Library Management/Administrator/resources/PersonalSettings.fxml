@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 
-<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#mouseHover" prefHeight="720.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Administrator.PersonalSettingsController">
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#mouseHover" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Administrator.PersonalSettingsController">
    <children>
-      <Label fx:id="mainLabel" alignment="CENTER" layoutX="312.0" layoutY="20.0" prefHeight="50.0" prefWidth="400.0" text="Personal Settings" textFill="WHITE">
+      <Label fx:id="mainLabel" alignment="CENTER" layoutX="200.0" layoutY="20.0" prefHeight="50.0" prefWidth="400.0" text="Personal Settings" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="48.0" />
          </font>
@@ -16,5 +18,16 @@
             <DropShadow height="20.0" radius="9.5" spread="0.3" width="20.0" />
          </effect>
       </Label>
+      <CheckBox fx:id="checkAll" alignment="CENTER" layoutX="50.0" layoutY="110.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Check All">
+         <font>
+            <Font name="Bell MT Bold" size="18.0" />
+         </font>
+      </CheckBox>
+      <CheckBox alignment="CENTER" layoutX="50.0" layoutY="180.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Check All">
+         <font>
+            <Font name="Bell MT Bold" size="18.0" />
+         </font>
+      </CheckBox>
+      <TextField layoutX="250.0" layoutY="175.0" prefHeight="40.0" prefWidth="400.0" />
    </children>
 </Pane>

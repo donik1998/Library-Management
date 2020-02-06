@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 
-<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#mouseHover" prefHeight="720.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Administrator.PersonalSettingsController">
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#setupScene" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Administrator.PersonalSettingsController">
    <children>
-      <Label fx:id="mainLabel" alignment="CENTER" layoutX="312.0" layoutY="20.0" prefHeight="50.0" prefWidth="400.0" text="Personal Settings" textFill="WHITE">
+      <Label fx:id="mainLabel" alignment="CENTER" layoutX="200.0" layoutY="10.0" prefHeight="50.0" prefWidth="400.0" text="Personal Settings" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="48.0" />
          </font>
@@ -16,5 +22,68 @@
             <DropShadow height="20.0" radius="9.5" spread="0.3" width="20.0" />
          </effect>
       </Label>
+      <CheckBox fx:id="fullNameCheckbox" alignment="CENTER" layoutX="100.0" layoutY="100.0" mnemonicParsing="false" onAction="#activateField" prefHeight="30.0" prefWidth="120.0" text="Full Name">
+         <font>
+            <Font name="Bell MT Bold" size="18.0" />
+         </font>
+      </CheckBox>
+      <TextField fx:id="newFullName" layoutX="300.0" layoutY="95.0" prefHeight="40.0" prefWidth="400.0" />
+      <CheckBox fx:id="phoneCheckbox" alignment="CENTER" layoutX="100.0" layoutY="170.0" mnemonicParsing="false" onAction="#activateField" prefHeight="30.0" prefWidth="160.0" text="Phone Number">
+         <font>
+            <Font name="Bell MT Bold" size="18.0" />
+         </font>
+      </CheckBox>
+      <TextField fx:id="newPhoneNumber" layoutX="300.0" layoutY="165.0" prefHeight="40.0" prefWidth="400.0" />
+      <TextField fx:id="newMailbox" layoutX="300.0" layoutY="235.0" prefHeight="40.0" prefWidth="400.0" />
+      <TextField fx:id="newUsername" layoutX="300.0" layoutY="305.0" prefHeight="40.0" prefWidth="400.0" />
+      <PasswordField fx:id="newPassword" layoutX="300.0" layoutY="375.0" prefHeight="40.0" prefWidth="400.0" />
+      <Button fx:id="checkAllButton" layoutX="60.0" layoutY="24.0" mnemonicParsing="false" onAction="#checkAllBoxes" prefHeight="50.0" prefWidth="100.0" text="Check All">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font>
+      </Button>
+      <CheckBox fx:id="mailboxCheckbox" alignment="CENTER" layoutX="100.0" layoutY="240.0" mnemonicParsing="false" onAction="#activateField" prefHeight="30.0" prefWidth="100.0" text="E-mail">
+         <font>
+            <Font name="Bell MT Bold" size="18.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="usernameCheckbox" alignment="CENTER" layoutX="100.0" layoutY="310.0" mnemonicParsing="false" onAction="#activateField" prefHeight="30.0" prefWidth="160.0" text="Username">
+         <font>
+            <Font name="Bell MT Bold" size="18.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="passwordCheckbox" alignment="CENTER" layoutX="100.0" layoutY="380.0" mnemonicParsing="false" onAction="#activateField" prefHeight="30.0" prefWidth="160.0" text="Password">
+         <font>
+            <Font name="Bell MT Bold" size="18.0" />
+         </font>
+      </CheckBox>
+      <DatePicker fx:id="newDOB" editable="false" layoutX="300.0" layoutY="445.0" prefHeight="40.0" prefWidth="400.0" promptText="Pick a date here" />
+      <CheckBox fx:id="DOBCheckbox" alignment="CENTER" layoutX="100.0" layoutY="450.0" mnemonicParsing="false" onAction="#activateField" prefHeight="30.0" prefWidth="160.0" text="Date of birth">
+         <font>
+            <Font name="Bell MT Bold" size="18.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="genderCheckbox" alignment="CENTER" layoutX="100.0" layoutY="530.0" mnemonicParsing="false" onAction="#activateField" prefHeight="30.0" prefWidth="160.0" text="Gender">
+         <font>
+            <Font name="Bell MT Bold" size="18.0" />
+         </font>
+      </CheckBox>
+      <RadioButton fx:id="newMaleGender" layoutX="300.0" layoutY="535.0" mnemonicParsing="false" text="Male">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="newFemaleGender" layoutX="440.0" layoutY="535.0" mnemonicParsing="false" text="Female">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="newHiddenGender" layoutX="580.0" layoutY="535.0" mnemonicParsing="false" text="Hide gender">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font>
+      </RadioButton>
+      <Button fx:id="saveButton" layoutX="100.0" layoutY="610.0" mnemonicParsing="false" onAction="#updateAccount" prefHeight="50.0" prefWidth="200.0" text="Save" />
+      <Button fx:id="cancelButton" cancelButton="true" layoutX="500.0" layoutY="610.0" mnemonicParsing="false" onAction="#closeForm" prefHeight="50.0" prefWidth="200.0" text="Cancel" />
    </children>
 </Pane>

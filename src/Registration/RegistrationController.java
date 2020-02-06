@@ -176,8 +176,8 @@ public class RegistrationController {
             currentUIndex=UIButtons.indexOf(whiteUI);
             changeCurrentUIPointer();
             mainPane.setBackground(whiteUI.getBackground());
-            fieldsRequirement.setTextFill(Color.RED);
             mainLabel.setTextFill(Color.WHITE);
+            fieldsRequirement.setTextFill(Color.RED);
             memberGenderLabel.setTextFill(Color.BLACK);
             memberConsentCheckbox.setTextFill(Color.BLACK);
             regulationsLabel.setTextFill(Color.BLACK);
