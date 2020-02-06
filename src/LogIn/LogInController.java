@@ -247,11 +247,16 @@ public class LogInController {
     void userSignIn(ActionEvent event) throws SQLException,IOException {
         Alert wrongUsernameMessage = new Alert(Alert.AlertType.ERROR);
         wrongUsernameMessage.setTitle("Wrong username");
+        wrongUsernameMessage.setHeaderText("Log in failed");
         Alert wrongPasswordMessage = new Alert(Alert.AlertType.ERROR);
         wrongPasswordMessage.setTitle("Wrong password");
+        wrongPasswordMessage.setHeaderText("Log in failed");
         Alert wrongPasswordAndUsernameMessage = new Alert(Alert.AlertType.ERROR);
+        wrongPasswordAndUsernameMessage.setHeaderText("Log in failed");
         wrongPasswordAndUsernameMessage.setTitle("Wrong username and password");
         Alert loginSuccess = new Alert(Alert.AlertType.INFORMATION);
+        loginSuccess.setTitle("Log in process succeed!");
+        loginSuccess.setHeaderText("You have logged in!");
         Pane newPane;
         if(event.getTarget().equals(signInButton)){
             //conditions to distinguish which user is trying to log in
@@ -282,8 +287,7 @@ public class LogInController {
                     wrongPasswordMessage.show();
                 } else {
                     //login success
-                    loginSuccess.setContentText("You have logged in successfully" +
-                            "\nWelcome " + Main.dbConnection.getResultSet().getString("Name"));
+                    loginSuccess.setContentText("Welcome " + Main.dbConnection.getResultSet().getString("Name") + "!");
                     loginSuccess.show();
                     Main.currentUserName = Main.dbConnection.getResultSet().getString("Name");
                     if(Main.currentUserType.equals(adminButton.getText())){

@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
 
 public class LibrarianPageController {
 
@@ -31,13 +32,19 @@ public class LibrarianPageController {
     private Button allBooksButton;
 
     @FXML
-    private Button membersWithOveerdueButton;
+    private Button membersWithOverdueButton;
 
     @FXML
     private Label allBooksLabel;
 
     @FXML
-    private Label issueBookButton;
+    private Label membersWithOverdue;
+
+    @FXML
+    private Button issueBookButton;
+
+    @FXML
+    private Label issueBookLabel;
 
     @FXML
     private Button membersManagement;
@@ -46,7 +53,10 @@ public class LibrarianPageController {
     private Label membersManagementLabel;
 
     @FXML
-    private Label booksManagement;
+    private Button booksManagement;
+
+    @FXML
+    private Label booksManagementLabel;
 
     @FXML
     private Button whiteUi;
@@ -74,6 +84,9 @@ public class LibrarianPageController {
 
     @FXML
     private Button violetUI;
+
+    @FXML
+    private Circle UIPointer;
 
     @FXML
     void changePersonalData(ActionEvent event) {

@@ -27,19 +27,19 @@
          </font>
       </Label>
       <Button fx:id="allBooksButton" alignment="CENTER" layoutX="435.0" layoutY="150.0" mnemonicParsing="false" onAction="#showAllBooks" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 15;" />
-      <Button fx:id="membersWithOveerdueButton" alignment="CENTER" layoutX="750.0" layoutY="150.0" mnemonicParsing="false" onAction="#showMembersWithOverdue" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 15;" />
+      <Button fx:id="membersWithOverdueButton" alignment="CENTER" layoutX="750.0" layoutY="150.0" mnemonicParsing="false" onAction="#showMembersWithOverdue" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 15;" />
       <Label fx:id="allBooksLabel" alignment="CENTER" layoutX="430.0" layoutY="310.0" prefHeight="20.0" prefWidth="160.0" text="All books available">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="730.0" layoutY="310.0" prefHeight="20.0" prefWidth="190.0" text="Members with overdue">
+      <Label fx:id="membersWithOverdue" alignment="CENTER" layoutX="730.0" layoutY="310.0" prefHeight="20.0" prefWidth="190.0" text="Members with overdue">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Label>
       <Button fx:id="issueBookButton" alignment="CENTER" layoutX="120.0" layoutY="400.0" mnemonicParsing="false" onAction="#issueBook" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 15;" />
-      <Label fx:id="issueBookButton" alignment="CENTER" layoutX="120.0" layoutY="560.0" prefHeight="20.0" prefWidth="150.0" text="Issue a book">
+      <Label fx:id="issueBookLabel" alignment="CENTER" layoutX="120.0" layoutY="560.0" prefHeight="20.0" prefWidth="150.0" text="Issue a book">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
@@ -51,7 +51,7 @@
          </font>
       </Label>
       <Button fx:id="booksManagement" alignment="CENTER" layoutX="750.0" layoutY="400.0" mnemonicParsing="false" onAction="#showBooksManagementDialog" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 15;" />
-      <Label fx:id="booksManagement" alignment="CENTER" layoutX="740.0" layoutY="560.0" prefHeight="20.0" prefWidth="170.0" text="Books management">
+      <Label fx:id="booksManagementLabel" alignment="CENTER" layoutX="740.0" layoutY="560.0" prefHeight="20.0" prefWidth="170.0" text="Books management">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>

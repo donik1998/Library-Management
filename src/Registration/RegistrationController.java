@@ -17,6 +17,8 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 public class RegistrationController {
@@ -115,7 +117,7 @@ public class RegistrationController {
     private int previousUIndex = 0, currentUIndex = 0;
     private ObservableList<String> genres = FXCollections.observableArrayList(
             "\0","Adventures","Fiction","Non-fiction",
-            "Science","Technical/Reference","Novel","Other","Not listed"
+            "Science","Technical/Reference","Novel","Other","Not listed", "None"
     );
 
     //reusable function to set initial size of buttons, except the one included to parameter
@@ -130,9 +132,9 @@ public class RegistrationController {
         }
     }
     //reusable function to scale specified button
-    private void scaleButton(Button buttonToScale, double scale){
-        buttonToScale.setScaleY(scale);
-        buttonToScale.setScaleX(scale);
+    private void scaleButton(Button buttonToScale){
+        buttonToScale.setScaleY(1.2);
+        buttonToScale.setScaleX(1.2);
     }
     //function to move current UI pointer
     private void changeCurrentUIPointer(){
@@ -168,7 +170,7 @@ public class RegistrationController {
     void changeUI(ActionEvent event){
         if(event.getTarget().equals(whiteUI)){
             mainPane.setBackground(new Background(new BackgroundFill(Color.PINK,null,null)));
-            scaleButton(whiteUI,1.2);
+            scaleButton(whiteUI);
             unScaleAll(whiteUI);
             previousUIndex=currentUIndex;
             currentUIndex=UIButtons.indexOf(whiteUI);
@@ -185,7 +187,7 @@ public class RegistrationController {
             noGenderButton.setTextFill(Color.BLACK);
         }
         if(event.getTarget().equals(redUI)){
-            scaleButton(redUI,1.2);
+            scaleButton(redUI);
             unScaleAll(redUI);
             previousUIndex=currentUIndex;
             currentUIndex=UIButtons.indexOf(redUI);
@@ -202,7 +204,7 @@ public class RegistrationController {
             noGenderButton.setTextFill(Color.WHITE);
         }
         if(event.getTarget().equals(greenUI)){
-            scaleButton(greenUI,1.2);
+            scaleButton(greenUI);
             unScaleAll(greenUI);
             previousUIndex=currentUIndex;
             currentUIndex=UIButtons.indexOf(greenUI);
@@ -219,7 +221,7 @@ public class RegistrationController {
             noGenderButton.setTextFill(Color.WHITE);
         }
         if(event.getTarget().equals(blueUI)){
-            scaleButton(blueUI,1.2);
+            scaleButton(blueUI);
             unScaleAll(blueUI);
             previousUIndex=currentUIndex;
             currentUIndex=UIButtons.indexOf(blueUI);
@@ -236,7 +238,7 @@ public class RegistrationController {
             noGenderButton.setTextFill(Color.WHITE);
         }
         if(event.getTarget().equals(yellowUI)){
-            scaleButton(yellowUI,1.2);
+            scaleButton(yellowUI);
             unScaleAll(yellowUI);
             previousUIndex=currentUIndex;
             currentUIndex=UIButtons.indexOf(yellowUI);
@@ -253,7 +255,7 @@ public class RegistrationController {
             noGenderButton.setTextFill(Color.BLACK);
         }
         if(event.getTarget().equals(darkUI)){
-            scaleButton(darkUI,1.2);
+            scaleButton(darkUI);
             unScaleAll(darkUI);
             previousUIndex=currentUIndex;
             currentUIndex=UIButtons.indexOf(darkUI);
@@ -270,7 +272,7 @@ public class RegistrationController {
             noGenderButton.setTextFill(Color.web("B2B2A4"));
         }
         if(event.getTarget().equals(orangeUI)){
-            scaleButton(orangeUI,1.2);
+            scaleButton(orangeUI);
             unScaleAll(orangeUI);
             previousUIndex=currentUIndex;
             currentUIndex=UIButtons.indexOf(orangeUI);
@@ -287,7 +289,7 @@ public class RegistrationController {
             noGenderButton.setTextFill(Color.WHITE);
         }
         if(event.getTarget().equals(violetUI)){
-            scaleButton(violetUI,1.2);
+            scaleButton(violetUI);
             unScaleAll(violetUI);
             previousUIndex=currentUIndex;
             currentUIndex=UIButtons.indexOf(violetUI);
@@ -304,7 +306,7 @@ public class RegistrationController {
             noGenderButton.setTextFill(Color.WHITE);
         }
         if(event.getTarget().equals(brownUI)){
-            scaleButton(brownUI,1.2);
+            scaleButton(brownUI);
             unScaleAll(brownUI);
             previousUIndex=currentUIndex;
             currentUIndex=UIButtons.indexOf(brownUI);
@@ -340,6 +342,13 @@ public class RegistrationController {
             UIButtons = List.of(whiteUI, redUI, greenUI, blueUI,
                     yellowUI, darkUI, orangeUI, brownUI, violetUI);
             favouriteGenres.setItems(genres);
+            memberUsername.setTooltip(new Tooltip("Username should be more than 8"));
+            memberPassword.setTooltip(new Tooltip("Your password should be at least 8 characters long"));
+            dateOfBirthField.setTooltip(new Tooltip("Please choose valid date of birth to confirm that you are older than 12 years"));
+            fullNameField.setTooltip(new Tooltip("Enter your full name here"));
+            favouriteGenres.setTooltip(new Tooltip("This is not required"));
+            favouriteGenres.getSelectionModel().select("None");
+            mailboxField.setTooltip(new Tooltip("Make sure to indicate your e-mail correctly"));
         }
         //hover effect for inputs
         if(event.getSource().equals(fullNameField)){
@@ -380,7 +389,71 @@ public class RegistrationController {
     }
 
     @FXML
-    void register(ActionEvent event) {
-
+    void register(ActionEvent event) throws SQLException, IOException {
+        if(event.getTarget().equals(registerButton)){
+            boolean validationComplete = true, correctUsername, correctName = true, correctMailbox, noGenderChosen, invalidDOB = false, noConsent;
+            String errorMessage = "\0", currentGender = "\0";
+            Alert errorNotification = new Alert(Alert.AlertType.ERROR);
+            errorNotification.setHeaderText("Validation failed");
+            errorNotification.setTitle("Error");
+            //check name to avoid special characters and numbers
+            if(fullNameField.getText().length()>0){
+                for(int i=0;i<fullNameField.getText().length();i++){
+                    correctName = (fullNameField.getText().charAt(i) > 65 && fullNameField.getText().charAt(i) < 90) ||
+                            (fullNameField.getText().charAt(i) > 97 && fullNameField.getText().charAt(i) < 122);
+                }
+            } else {
+                errorMessage+="Full name field is empty!\n";
+            }
+            noConsent = !memberConsentCheckbox.isSelected();
+            correctUsername = memberUsername.getText().length() > 8 && memberUsername.getText().length() != 8;
+            correctMailbox = mailboxField.getText().contains("@");
+            noGenderChosen = (!maleMemberButton.isSelected() && !femaleMemberButton.isSelected() && !noGenderButton.isSelected());
+            LocalDate dateOfBirth = dateOfBirthField.getValue();
+            LocalDate currentTime = LocalDate.now();
+            if(dateOfBirth!=null){
+                invalidDOB = (ChronoUnit.DAYS.between(currentTime,dateOfBirth)) > 0 && (ChronoUnit.YEARS.between(currentTime,dateOfBirth) < 12);
+            } else {
+                errorMessage+="Date of birth is not chosen\n";
+            }
+            if(!correctName){
+                errorMessage+="Your name should contain upper or lower case English alphabet letters only!\n";
+            }
+            if(!correctUsername){
+                errorMessage+="Your username's should be greater than 8\n";
+            }
+            if(invalidDOB){
+                errorMessage+="Invalid date of birth. You have to be older than 12\n";
+            }
+            if(!correctMailbox){
+                errorMessage+="Incorrect e-mail\n";
+            }
+            if(noGenderChosen){
+                errorMessage+="Choose option for gender\n";
+            }
+            if(noConsent){
+                errorMessage+="Wee need your consent to proceed further\n";
+            }
+            if (maleMemberButton.isSelected()){
+                currentGender = maleMemberButton.getText();
+            } else if (femaleMemberButton.isSelected()){
+                currentGender = femaleMemberButton.getText();
+            } else {
+                currentGender = noGenderButton.getText();
+            }
+            errorNotification.setContentText(errorMessage);
+            if(!errorMessage.equals("\0")){
+                errorNotification.show();
+                validationComplete = false;
+            }
+            if(validationComplete){
+                Main.dbConnection.changeConnection("library","root","");
+                Main.dbConnection.executeCustomQuery("INSERT INTO members VALUES ('" + fullNameField.getText() + "','" + mailboxField.getText() +
+                        "','" + phoneNumberField.getText() + "', '" + currentGender +"', '" + favouriteGenres.getValue() + "', " +
+                        "'" + dateOfBirthField.getValue() + "','" + memberUsername.getText() + "','" + memberPassword.getText() + "')");
+            }
+            Pane newScenePane = FXMLLoader.load(getClass().getResource("/Member/resources/MemberPage.fxml"));
+            mainPane.getChildren().add(newScenePane);
+        }
     }
 }

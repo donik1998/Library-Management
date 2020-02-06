@@ -24,20 +24,29 @@
       <Button fx:id="membersManagementButton" alignment="CENTER" layoutX="100.0" layoutY="230.0" mnemonicParsing="false" onAction="#showMembersManagementDialog" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 15;" />
       <Button fx:id="librarianManagementButton" alignment="CENTER" layoutX="400.0" layoutY="230.0" mnemonicParsing="false" onAction="#showLibrarianManagementDialog" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 15;" />
       <Button fx:id="bookManagementButton" alignment="CENTER" layoutX="700.0" layoutY="230.0" mnemonicParsing="false" onAction="#showBookManagementDialog" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: none; -fx-border-color: black; -fx-border-radius: 15;" />
-      <Label fx:id="membersManagementLabel" alignment="CENTER" layoutX="95.0" layoutY="440.0" prefHeight="30.0" prefWidth="210.0" text="Members management">
+      <Label fx:id="membersManagementLabel" alignment="CENTER" layoutX="95.0" layoutY="440.0" prefHeight="30.0" prefWidth="210.0" text="Members management" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="20.0" />
          </font>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="20.0" radius="9.5" spread="0.5" width="20.0" />
+         </effect>
       </Label>
-      <Label fx:id="librarianManagementLabel" alignment="CENTER" layoutX="390.0" layoutY="440.0" prefHeight="30.0" prefWidth="220.0" text="Librarians management">
+      <Label fx:id="librarianManagementLabel" alignment="CENTER" layoutX="390.0" layoutY="440.0" prefHeight="30.0" prefWidth="220.0" text="Librarians management" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="20.0" />
          </font>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="20.0" radius="9.5" spread="0.5" width="20.0" />
+         </effect>
       </Label>
-      <Label fx:id="booksManagementLabel" alignment="CENTER" layoutX="700.0" layoutY="440.0" prefHeight="30.0" prefWidth="200.0" text="Books management">
+      <Label fx:id="booksManagementLabel" alignment="CENTER" layoutX="700.0" layoutY="440.0" prefHeight="30.0" prefWidth="200.0" text="Books management" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="20.0" />
          </font>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="20.0" radius="9.5" spread="0.5" width="20.0" />
+         </effect>
       </Label>
       <Button fx:id="whiteUI" layoutX="84.0" layoutY="600.0" mnemonicParsing="false" onAction="#changeUI" onMouseEntered="#mouseHover" onMouseExited="#mouseHoverExit" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: white; -fx-background-radius: 50%;">
          <effect>
