@@ -72,6 +72,7 @@ public class LogInController {
 
     @FXML
     private RadioButton memberButton;
+
     private ToggleGroup userTypes = new ToggleGroup();
 
     @FXML
@@ -245,66 +246,41 @@ public class LogInController {
     }
     @FXML
     void userSignIn(ActionEvent event) throws SQLException,IOException {
-        Alert wrongUsernameMessage = new Alert(Alert.AlertType.ERROR);
-        wrongUsernameMessage.setTitle("Wrong username");
-        wrongUsernameMessage.setHeaderText("Log in failed");
-        Alert wrongPasswordMessage = new Alert(Alert.AlertType.ERROR);
-        wrongPasswordMessage.setTitle("Wrong password");
-        wrongPasswordMessage.setHeaderText("Log in failed");
-        Alert wrongPasswordAndUsernameMessage = new Alert(Alert.AlertType.ERROR);
-        wrongPasswordAndUsernameMessage.setHeaderText("Log in failed");
-        wrongPasswordAndUsernameMessage.setTitle("Wrong username and password");
+        Pane newPane;
         Alert loginSuccess = new Alert(Alert.AlertType.INFORMATION);
+        Alert loginFailure = new Alert(Alert.AlertType.ERROR);
         loginSuccess.setTitle("Log in process succeed!");
         loginSuccess.setHeaderText("You have logged in!");
-        Pane newPane;
-        if(event.getTarget().equals(signInButton)){
-            //conditions to distinguish which user is trying to log in
-            if(adminButton.isSelected()){
-                Main.dbConnection.setResultSet("SELECT * FROM admins");
-                Main.currentUserType = adminButton.getText();
-            }else if(librarianButton.isSelected()){
-                Main.dbConnection.setResultSet("SELECT * FROM librarians");
-                Main.currentUserType = librarianButton.getText();
-            }else {
-                Main.currentUserType = memberButton.getText();
-                Main.dbConnection.setResultSet("SELECT * FROM members");
-            }
-            //checking if there is such user with specified username and log in
-            while (Main.dbConnection.getResultSet().next()){
-                if(!Main.dbConnection.getResultSet().getString("Username").equals(userNameToLogIn.getText()) &&
-                        !Main.dbConnection.getResultSet().getString("Password").equals(userPasswordToLogIn.getText())){
-                    //wrong username and password
-                    wrongPasswordAndUsernameMessage.setContentText("Invalid username and password");
-                    wrongPasswordAndUsernameMessage.show();
-                }else if(!Main.dbConnection.getResultSet().getString("Username").equals(userNameToLogIn.getText())){
-                    //wrong username
-                    wrongUsernameMessage.setContentText("Invalid username!!!");
-                    wrongUsernameMessage.show();
-                }else if(!Main.dbConnection.getResultSet().getString("Password").equals(userPasswordToLogIn.getText())){
-                    //wrong password
-                    wrongPasswordMessage.setContentText("Invalid password!!!");
-                    wrongPasswordMessage.show();
-                } else {
-                    //login success
-                    loginSuccess.setContentText("Welcome " + Main.dbConnection.getResultSet().getString("Name") + "!");
-                    loginSuccess.show();
-                    Main.currentUserName = Main.dbConnection.getResultSet().getString("Name");
-                    if(Main.currentUserType.equals(adminButton.getText())){
-                        //load admin page here
-                        newPane = FXMLLoader.load(getClass().getResource("/Administrator/resources/AdministratorPage.fxml"));
-                        mainPane.getChildren().add(newPane);
-                    }else if(Main.currentUserType.equals(librarianButton.getText())){
-                        //load librarian page here
-                        newPane = FXMLLoader.load(getClass().getResource("/Librarian/resources/LibrarianPage.fxml"));
-                        mainPane.getChildren().add(newPane);
-                    }else{
-                        //load library member page
-                        newPane = FXMLLoader.load(getClass().getResource("/Member/resources/MemberPage.fxml"));
-                        mainPane.getChildren().add(newPane);
-                    }
-                }
-            }
+        loginFailure.setTitle("Log in failed");
+        loginFailure.setHeaderText("Something went wrong!");
+        if (adminButton.isSelected()){
+            Main.currentUserType = adminButton.getText();
+        } else if (librarianButton.isSelected()){
+            Main.currentUserType = librarianButton.getText();
+        } else {
+            Main.currentUserType = memberButton.getText();
         }
+        Main.dbConnection.setResultSet("SELECT * FROM users WHERE Username='" +
+                userNameToLogIn.getText() + "' AND Password='" + userPasswordToLogIn.getText() + "'" +
+                "AND `User Type`='" + Main.currentUserType + "'");
+        if (Main.dbConnection.getResultSet().next()){
+            Main.currentUserName = userNameToLogIn.getText();
+            loginSuccess.setContentText("Welcome " + Main.currentUserName);
+            loginSuccess.show();
+            if(Main.currentUserType.equals(adminButton.getText())){
+                newPane = FXMLLoader.load(getClass().getResource("/Administrator/resources/AdministratorPage.fxml"));
+                mainPane.getChildren().add(newPane);
+            } else if (Main.currentUserType.equals(librarianButton.getText())){
+                newPane = FXMLLoader.load(getClass().getResource("/Librarian/resources/LibrarianPage.fxml"));
+                mainPane.getChildren().add(newPane);
+            } else {
+                newPane = FXMLLoader.load(getClass().getResource("/Member/resources/MemberPage.fxml"));
+                mainPane.getChildren().add(newPane);
+            }
+        }else {
+            loginFailure.setContentText("Log in failed due to invalid data");
+            loginFailure.show();
+        }
+        Main.dbConnection.closeConnection();
     }
 }

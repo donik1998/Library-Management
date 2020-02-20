@@ -35,7 +35,7 @@ public class DatabaseConnection {
             connection.close();
         }
     }
-    public void changeConnection(String dbName, String username, String password) throws SQLException{
+    public void openConnection(String dbName, String username, String password) throws SQLException{
         connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dbName,username,password);
         statement=connection.createStatement();
     }

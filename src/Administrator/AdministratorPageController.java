@@ -375,7 +375,7 @@ public class AdministratorPageController {
         Pane newScenePane = FXMLLoader.load(getClass().getResource("/Administrator/resources/PersonalSettings.fxml"));
         newScenePane.setBackground(mainPane.getBackground());
         Stage newStage = new Stage();
-        newStage.setScene(new Scene(newScenePane,1024,720));
+        newStage.setScene(new Scene(newScenePane,800,700));
         newStage.setTitle("Personal settings");
         newStage.show();
     }

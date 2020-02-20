@@ -447,11 +447,12 @@ public class RegistrationController {
                 validationComplete = false;
             }
             if(validationComplete){
-                Main.dbConnection.changeConnection("library","root","");
+                Main.dbConnection.openConnection("library","root","");
                 Main.dbConnection.executeCustomQuery("INSERT INTO members VALUES ('" + fullNameField.getText() + "','" + mailboxField.getText() +
                         "','" + phoneNumberField.getText() + "', '" + currentGender +"', '" + favouriteGenres.getValue() + "', " +
                         "'" + dateOfBirthField.getValue() + "','" + memberUsername.getText() + "','" + memberPassword.getText() + "')");
             }
+            Main.dbConnection.closeConnection();
             Pane newScenePane = FXMLLoader.load(getClass().getResource("/Member/resources/MemberPage.fxml"));
             mainPane.getChildren().add(newScenePane);
         }

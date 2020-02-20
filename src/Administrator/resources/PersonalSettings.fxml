@@ -11,10 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#setupScene" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Administrator.PersonalSettingsController">
    <children>
-      <Label fx:id="mainLabel" alignment="CENTER" layoutX="200.0" layoutY="10.0" prefHeight="50.0" prefWidth="400.0" text="Personal Settings" textFill="WHITE">
+      <Label fx:id="mainLabel" alignment="CENTER" layoutX="175.0" layoutY="5.0" prefHeight="50.0" prefWidth="550.0" text="Admin Personal Settings" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="48.0" />
          </font>
@@ -37,7 +36,7 @@
       <TextField fx:id="newMailbox" layoutX="300.0" layoutY="235.0" prefHeight="40.0" prefWidth="400.0" />
       <TextField fx:id="newUsername" layoutX="300.0" layoutY="305.0" prefHeight="40.0" prefWidth="400.0" />
       <PasswordField fx:id="newPassword" layoutX="300.0" layoutY="375.0" prefHeight="40.0" prefWidth="400.0" />
-      <Button fx:id="checkAllButton" layoutX="60.0" layoutY="24.0" mnemonicParsing="false" onAction="#checkAllBoxes" prefHeight="50.0" prefWidth="100.0" text="Check All">
+      <Button fx:id="checkAllButton" layoutX="40.0" layoutY="20.0" mnemonicParsing="false" onAction="#checkAllBoxes" prefHeight="50.0" prefWidth="100.0" text="Check All">
          <font>
             <Font name="Bell MT Bold" size="16.0" />
          </font>
@@ -47,12 +46,12 @@
             <Font name="Bell MT Bold" size="18.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="usernameCheckbox" alignment="CENTER" layoutX="100.0" layoutY="310.0" mnemonicParsing="false" onAction="#activateField" prefHeight="30.0" prefWidth="160.0" text="Username">
+      <CheckBox fx:id="usernameCheckbox" layoutX="100.0" layoutY="310.0" mnemonicParsing="false" onAction="#activateField" prefHeight="30.0" prefWidth="160.0" text="Username">
          <font>
             <Font name="Bell MT Bold" size="18.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="passwordCheckbox" alignment="CENTER" layoutX="100.0" layoutY="380.0" mnemonicParsing="false" onAction="#activateField" prefHeight="30.0" prefWidth="160.0" text="Password">
+      <CheckBox fx:id="passwordCheckbox" layoutX="100.0" layoutY="380.0" mnemonicParsing="false" onAction="#activateField" prefHeight="30.0" prefWidth="160.0" text="Password">
          <font>
             <Font name="Bell MT Bold" size="18.0" />
          </font>
@@ -63,7 +62,7 @@
             <Font name="Bell MT Bold" size="18.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="genderCheckbox" alignment="CENTER" layoutX="100.0" layoutY="530.0" mnemonicParsing="false" onAction="#activateField" prefHeight="30.0" prefWidth="160.0" text="Gender">
+      <CheckBox fx:id="genderCheckbox" layoutX="100.0" layoutY="530.0" mnemonicParsing="false" onAction="#activateField" prefHeight="30.0" prefWidth="160.0" text="Gender">
          <font>
             <Font name="Bell MT Bold" size="18.0" />
          </font>
