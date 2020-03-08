@@ -237,7 +237,7 @@ public class PersonalSettingsController {
                 Main.dbConnection.executeCustomQuery("UPDATE members SET Username='" + newFullName.getText() + "' WHERE Name='" + Main.dbConnection.getResultSet().getString("Name") + "'");
             }
             if (phoneCheckbox.isSelected()){
-                Main.dbConnection.executeCustomQuery();
+
             }
             if (mailboxCheckbox.isSelected()){
 
