@@ -1,4 +1,4 @@
-package Main;
+package MainFunctionalities;
 
 import java.sql.*;
 
@@ -18,7 +18,7 @@ public class DatabaseConnection {
         return dbConn;
     }
     private DatabaseConnection(String dbName, String username, String password) throws SQLException {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library",username,password);
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dbName,username,password);
         statement = connection.createStatement();
     }
     public void executeCustomQuery(String query) throws SQLException{

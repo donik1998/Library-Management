@@ -1,6 +1,6 @@
 package Administrator;
 
-import Main.Main;
+import MainFunctionalities.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -231,10 +231,10 @@ public class PersonalSettingsController {
     void updateAccount(ActionEvent event) throws SQLException {
         if (event.getTarget().equals(saveButton)){
             Main.dbConnection.openConnection("library", "root", "");
-            Main.dbConnection.setResultSet("SELECT * FROM users WHERE Username='" + Main.currentUserName + "' AND " +
-                    "`User Type`='" + Main.currentUserType + "'");
+            Main.dbConnection.setResultSet("SELECT * FROM users WHERE Username=\'" + Main.currentUserName + "\' AND " +
+                    "`User Type`=\'" + Main.currentUserType + "\'");
             if (fullNameCheckbox.isSelected()){
-                Main.dbConnection.executeCustomQuery("UPDATE members SET Username='" + newFullName.getText() + "' WHERE Name='" + Main.dbConnection.getResultSet().getString("Name") + "'");
+                Main.dbConnection.executeCustomQuery("UPDATE members SET Username=\'" + newFullName.getText() + "\' WHERE Name=\'" + Main.dbConnection.getResultSet().getString("Name") + "\'");
             }
             if (phoneCheckbox.isSelected()){
 

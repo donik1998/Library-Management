@@ -1,6 +1,6 @@
 package Registration;
 
-import Main.Main;
+import MainFunctionalities.Main;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

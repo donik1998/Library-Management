@@ -1,6 +1,6 @@
 package LogIn;
 
-import Main.Main;
+import MainFunctionalities.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -236,16 +236,20 @@ public class LogInController {
         }
     }
 
+    boolean setupFlag = false;
+
     @FXML
     void setupScene(MouseEvent event) {
-        if(event.getSource().equals(mainPane)){
+        if(event.getSource().equals(mainPane) && !setupFlag){
             adminButton.setToggleGroup(userTypes);
             librarianButton.setToggleGroup(userTypes);
             memberButton.setToggleGroup(userTypes);
+            setupFlag = true;
         }
     }
     @FXML
     void userSignIn(ActionEvent event) throws SQLException,IOException {
+        Main.dbConnection.openConnection("library", "root", "");
         Pane newPane;
         Alert loginSuccess = new Alert(Alert.AlertType.INFORMATION);
         Alert loginFailure = new Alert(Alert.AlertType.ERROR);

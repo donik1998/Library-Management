@@ -1,6 +1,6 @@
 package Administrator;
 
-import Main.Main;
+import MainFunctionalities.Main;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -246,10 +246,10 @@ public class AdministratorPageController {
                     new Image(String.valueOf(new File(String.valueOf(getClass().getResource("/Administrator/imgs/memberManagementBlueUI.png")))))
             )));
             librarianManagementButton.setBackground(new Background(changeBackgroundImage(
-                    new Image(String.valueOf(new File(String.valueOf(getClass().getResource("/Administrator/imgs/booksManagementBlueUI.png")))))
+                    new Image(String.valueOf(new File(String.valueOf(getClass().getResource("/Administrator/imgs/librarianManagementBlueUI.png")))))
             )));
             bookManagementButton.setBackground(new Background(changeBackgroundImage(
-                    new Image(String.valueOf(new File(String.valueOf(getClass().getResource("/Administrator/imgs/librarianManagementBlueUI.png")))))
+                    new Image(String.valueOf(new File(String.valueOf(getClass().getResource("/Administrator/imgs/booksManagementBlueUI.png")))))
             )));
             previousUIndex = currentUIndex;
             currentUIndex = UIButtons.indexOf(blueUI);
@@ -382,17 +382,17 @@ public class AdministratorPageController {
 
     @FXML
     void showBookManagementDialog(ActionEvent event) {
-
+        //todo
     }
 
     @FXML
     void showLibrarianManagementDialog(ActionEvent event) {
-
+        //todo
     }
 
     @FXML
     void showMembersManagementDialog(ActionEvent event) {
-
+        //todo
     }
 
     @FXML
